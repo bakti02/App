@@ -1,6 +1,6 @@
 {
-  "name": "SaaS Workspace & Billing Dashboard",
-  "description": "A modern SaaS management dashboard featuring workspace navigation, subscription billing plans, add-ons, and AI assistant tools.",
+  "name": "NusaSec Cloud Security & Quantum Platform",
+  "description": "Enterprise Cybersecurity, Cloud Posture, Trust Compliance, and Post-Quantum Cryptography (PQC) Customer Tower.",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }

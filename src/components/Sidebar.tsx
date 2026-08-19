@@ -2,18 +2,27 @@ import React from 'react';
 import {
   Search,
   LayoutGrid,
-  Users,
-  Layers,
-  Gem,
+  ShoppingBag,
+  CheckSquare,
+  BarChart3,
   Bell,
-  Sparkles,
-  User,
-  SlidersHorizontal,
-  ShieldCheck,
-  Lock,
+  Cloud,
+  ShieldAlert,
+  GitFork,
+  Fingerprint,
+  FileCheck2,
+  FileText,
+  BookOpen,
+  PieChart,
+  Database,
+  Atom,
+  Binary,
   Code2,
-  Boxes,
-  FileSpreadsheet,
+  Package,
+  Github,
+  CreditCard,
+  Building2,
+  Settings,
   Plus
 } from 'lucide-react';
 import { NavigationSection } from '../types';
@@ -32,144 +41,157 @@ export const Sidebar: React.FC<SidebarProps> = ({
   onOpenSearch,
   onAddNewTeam
 }) => {
-  const workplaceItems = [
-    { id: 'overview' as NavigationSection, label: 'Overview', icon: LayoutGrid },
-    { id: 'members' as NavigationSection, label: 'Members', icon: Users },
-    { id: 'projects' as NavigationSection, label: 'Projects', icon: Layers },
-    { id: 'billing' as NavigationSection, label: 'Billing', icon: Gem },
-    { id: 'notifications' as NavigationSection, label: 'Notifications', icon: Bell },
-    { id: 'integrations' as NavigationSection, label: 'Integrations', icon: Sparkles }
-  ];
-
-  const accountItems = [
-    { id: 'profile' as NavigationSection, label: 'Profile', icon: User },
-    { id: 'preference' as NavigationSection, label: 'Preference', icon: SlidersHorizontal },
-    { id: 'security' as NavigationSection, label: 'Security', icon: ShieldCheck },
-    { id: 'passwords' as NavigationSection, label: 'Passwords', icon: Lock },
-    { id: 'api' as NavigationSection, label: 'API', icon: Code2 }
-  ];
-
-  const teamItems = [
-    { id: 'team-goodwriter' as NavigationSection, label: 'GoodWriter', icon: Boxes },
-    { id: 'team-invoicer' as NavigationSection, label: 'Invoicer', icon: FileSpreadsheet }
+  // Navigation structure based on NusaSec Customer Tower Taxonomy
+  const navigationGroups = [
+    {
+      group: 'MARKETPLACE',
+      items: [
+        { id: 'marketplace' as NavigationSection, label: 'All Services', icon: ShoppingBag, badge: 'Catalog' }
+      ]
+    },
+    {
+      group: 'DASHBOARD',
+      items: [
+        { id: 'overview' as NavigationSection, label: 'Overview', icon: LayoutGrid },
+        { id: 'action-center' as NavigationSection, label: 'Action Center', icon: CheckSquare, badge: '4 New' },
+        { id: 'analytics' as NavigationSection, label: 'Analytics', icon: BarChart3 },
+        { id: 'notifications' as NavigationSection, label: 'Notifications', icon: Bell }
+      ]
+    },
+    {
+      group: 'SECURITY (NusaSec Secure)',
+      items: [
+        { id: 'assets-cloud' as NavigationSection, label: 'Assets & Cloud', icon: Cloud },
+        { id: 'risk-exposure' as NavigationSection, label: 'Risk & Exposure', icon: ShieldAlert, badge: '3 CVSS' },
+        { id: 'attack-paths' as NavigationSection, label: 'Attack Paths', icon: GitFork },
+        { id: 'identity' as NavigationSection, label: 'Identity', icon: Fingerprint }
+      ]
+    },
+    {
+      group: 'TRUST (NusaSec Trust)',
+      items: [
+        { id: 'compliance' as NavigationSection, label: 'Compliance', icon: FileCheck2, badge: '96.4%' },
+        { id: 'evidence' as NavigationSection, label: 'Evidence', icon: FileText },
+        { id: 'regulatory' as NavigationSection, label: 'Regulatory', icon: BookOpen },
+        { id: 'reports' as NavigationSection, label: 'Reports', icon: PieChart }
+      ]
+    },
+    {
+      group: 'DATA INTELLIGENCE',
+      items: [
+        { id: 'data-explorer' as NavigationSection, label: 'Data Explorer', icon: Database }
+      ]
+    },
+    {
+      group: 'QUANTUM (NusaSec Quantum)',
+      items: [
+        { id: 'pqc-readiness' as NavigationSection, label: 'PQC Readiness', icon: Atom, badge: 'NIST PQC' },
+        { id: 'migration-center' as NavigationSection, label: 'Migration Center', icon: Binary }
+      ]
+    },
+    {
+      group: 'DEVELOPER',
+      items: [
+        { id: 'pqc-api' as NavigationSection, label: 'PQC API', icon: Code2 },
+        { id: 'pqc-sdk' as NavigationSection, label: 'PQC SDK', icon: Package },
+        { id: 'github-connect' as NavigationSection, label: 'GitHub Connect', icon: Github }
+      ]
+    },
+    {
+      group: 'COMMERCIAL & ACCOUNT',
+      items: [
+        { id: 'billing' as NavigationSection, label: 'Billing & Usage', icon: CreditCard },
+        { id: 'organization' as NavigationSection, label: 'Organization (RBAC)', icon: Building2 },
+        { id: 'settings' as NavigationSection, label: 'Settings', icon: Settings }
+      ]
+    }
   ];
 
   return (
     <div 
       id="sidebar-panel" 
-      className="w-64 bg-white border-r border-slate-200/90 flex flex-col h-full py-4 px-3 select-none shrink-0"
+      className="w-64 bg-white dark:bg-slate-900 border-r border-slate-200/90 dark:border-slate-800 flex flex-col h-full py-4 px-3 select-none shrink-0 transition-colors duration-200"
     >
+      {/* Brand Header */}
+      <div className="px-3 pb-3 mb-2 border-b border-slate-100 dark:border-slate-800 flex items-center justify-between">
+        <div className="flex items-center gap-2">
+          <div className="w-6 h-6 rounded-lg bg-slate-950 dark:bg-blue-600 flex items-center justify-center text-white font-bold text-[11px] shadow-2xs">
+            N
+          </div>
+          <div>
+            <div className="text-xs font-bold text-slate-900 dark:text-white tracking-tight flex items-center gap-1.5">
+              <span>NusaSec Core</span>
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+            </div>
+            <p className="text-[10px] text-slate-400 dark:text-slate-500 font-mono">Tenant: nusasec-prod-88</p>
+          </div>
+        </div>
+      </div>
+
       {/* Search Input Box with ⌘K Badge */}
-      <div className="px-1 mb-4">
+      <div className="px-1 mb-3">
         <button
           id="sidebar-search-btn"
           onClick={onOpenSearch}
-          className="w-full flex items-center justify-between px-3 py-2 bg-slate-50 hover:bg-slate-100 border border-slate-200/80 rounded-xl text-slate-400 text-xs font-medium transition-all group shadow-[0_1px_2px_rgba(0,0,0,0.02)]"
+          className="w-full flex items-center justify-between px-3 py-2 bg-slate-50 dark:bg-slate-800/80 hover:bg-slate-100 dark:hover:bg-slate-800 border border-slate-200/80 dark:border-slate-700/80 rounded-xl text-slate-400 text-xs font-medium transition-all group shadow-[0_1px_2px_rgba(0,0,0,0.02)]"
         >
           <div className="flex items-center gap-2">
-            <Search className="w-3.5 h-3.5 text-slate-400 group-hover:text-slate-600 transition-colors" />
-            <span className="text-slate-500 group-hover:text-slate-800 text-[13px]">Search</span>
+            <Search className="w-3.5 h-3.5 text-slate-400 group-hover:text-slate-600 dark:group-hover:text-slate-300 transition-colors" />
+            <span className="text-slate-500 dark:text-slate-300 group-hover:text-slate-800 dark:group-hover:text-white text-[13px]">Search</span>
           </div>
-          <kbd className="inline-flex items-center gap-0.5 px-1.5 py-0.5 text-[10px] font-medium text-slate-400 bg-white border border-slate-200 rounded shadow-xs">
+          <kbd className="inline-flex items-center gap-0.5 px-1.5 py-0.5 text-[10px] font-medium text-slate-400 dark:text-slate-400 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded shadow-xs">
             ⌘ K
           </kbd>
         </button>
       </div>
 
       {/* Navigation Scrollable Body */}
-      <div className="flex-1 overflow-y-auto space-y-6 pr-1 custom-scrollbar">
-        {/* SECTION: WORKPLACE */}
-        <div>
-          <div className="px-3 mb-2 text-[11px] font-bold tracking-wider text-slate-400 uppercase">
-            Workplace
-          </div>
-          <div className="space-y-0.5">
-            {workplaceItems.map((item) => {
-              const Icon = item.icon;
-              const isActive = currentSection === item.id;
-              return (
-                <button
-                  key={item.id}
-                  id={`nav-item-${item.id}`}
-                  onClick={() => onSelectSection(item.id)}
-                  className={`w-full flex items-center gap-3 px-3 py-2 rounded-xl text-[13px] font-medium transition-colors ${
-                    isActive
-                      ? 'bg-slate-100 text-slate-900 font-semibold shadow-xs'
-                      : 'text-slate-600 hover:text-slate-900 hover:bg-slate-50'
-                  }`}
-                >
-                  <Icon className={`w-4 h-4 stroke-[1.9] ${isActive ? 'text-slate-900' : 'text-slate-500'}`} />
-                  <span>{item.label}</span>
-                </button>
-              );
-            })}
-          </div>
-        </div>
+      <div className="flex-1 overflow-y-auto space-y-5 pr-1 custom-scrollbar">
+        {navigationGroups.map((group, gIdx) => (
+          <div key={gIdx} className="space-y-1">
+            <div className="px-3 mb-1.5 text-[10px] font-bold tracking-wider text-slate-400 dark:text-slate-500 uppercase font-mono">
+              {group.group}
+            </div>
+            <div className="space-y-0.5">
+              {group.items.map((item) => {
+                const Icon = item.icon;
+                const isActive = currentSection === item.id || 
+                  (item.id === 'organization' && currentSection === 'members') ||
+                  (item.id === 'settings' && currentSection === 'preference');
+                
+                return (
+                  <button
+                    key={item.id}
+                    id={`nav-item-${item.id}`}
+                    onClick={() => onSelectSection(item.id)}
+                    className={`w-full flex items-center justify-between px-3 py-1.5 rounded-xl text-[13px] font-medium transition-colors ${
+                      isActive
+                        ? 'bg-slate-900 dark:bg-blue-600 text-white font-semibold shadow-xs'
+                        : 'text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-50 dark:hover:bg-slate-800/60'
+                    }`}
+                  >
+                    <div className="flex items-center gap-2.5 min-w-0">
+                      <Icon className={`w-4 h-4 shrink-0 stroke-[1.9] ${isActive ? 'text-white' : 'text-slate-500 dark:text-slate-400'}`} />
+                      <span className="truncate">{item.label}</span>
+                    </div>
 
-        {/* SECTION: MY ACCOUNT */}
-        <div>
-          <div className="px-3 mb-2 text-[11px] font-bold tracking-wider text-slate-400 uppercase">
-            My Account
+                    {item.badge && (
+                      <span
+                        className={`text-[9px] font-bold px-1.5 py-0.2 rounded-full uppercase shrink-0 font-mono ${
+                          isActive
+                            ? 'bg-white/20 text-white'
+                            : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 border border-slate-200 dark:border-slate-700'
+                        }`}
+                      >
+                        {item.badge}
+                      </span>
+                    )}
+                  </button>
+                );
+              })}
+            </div>
           </div>
-          <div className="space-y-0.5">
-            {accountItems.map((item) => {
-              const Icon = item.icon;
-              const isActive = currentSection === item.id;
-              return (
-                <button
-                  key={item.id}
-                  id={`nav-item-${item.id}`}
-                  onClick={() => onSelectSection(item.id)}
-                  className={`w-full flex items-center gap-3 px-3 py-2 rounded-xl text-[13px] font-medium transition-colors ${
-                    isActive
-                      ? 'bg-slate-100 text-slate-900 font-semibold shadow-xs'
-                      : 'text-slate-600 hover:text-slate-900 hover:bg-slate-50'
-                  }`}
-                >
-                  <Icon className={`w-4 h-4 stroke-[1.9] ${isActive ? 'text-slate-900' : 'text-slate-500'}`} />
-                  <span>{item.label}</span>
-                </button>
-              );
-            })}
-          </div>
-        </div>
-
-        {/* SECTION: TEAM */}
-        <div>
-          <div className="px-3 mb-2 text-[11px] font-bold tracking-wider text-slate-400 uppercase">
-            Team
-          </div>
-          <div className="space-y-0.5">
-            {teamItems.map((item) => {
-              const Icon = item.icon;
-              const isActive = currentSection === item.id;
-              return (
-                <button
-                  key={item.id}
-                  id={`nav-item-${item.id}`}
-                  onClick={() => onSelectSection(item.id)}
-                  className={`w-full flex items-center gap-3 px-3 py-2 rounded-xl text-[13px] font-medium transition-colors ${
-                    isActive
-                      ? 'bg-slate-100 text-slate-900 font-semibold shadow-xs'
-                      : 'text-slate-600 hover:text-slate-900 hover:bg-slate-50'
-                  }`}
-                >
-                  <Icon className={`w-4 h-4 stroke-[1.9] ${isActive ? 'text-slate-900' : 'text-slate-500'}`} />
-                  <span>{item.label}</span>
-                </button>
-              );
-            })}
-
-            <button
-              id="add-new-team-btn"
-              onClick={onAddNewTeam || (() => onSelectSection('members'))}
-              className="w-full flex items-center gap-3 px-3 py-2 rounded-xl text-[13px] font-medium text-slate-500 hover:text-slate-900 hover:bg-slate-50 transition-colors"
-            >
-              <Plus className="w-4 h-4 stroke-[2] text-slate-400" />
-              <span>Add new team</span>
-            </button>
-          </div>
-        </div>
+        ))}
       </div>
     </div>
   );
